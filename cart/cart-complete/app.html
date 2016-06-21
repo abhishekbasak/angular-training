@@ -8,6 +8,9 @@
         <script>
             angular.module("sportsStore", []);
         </script>
+        
+        <script src="controllers/sportsStore.js"></script>
+        <script src="filters/customFilters.js"></script>
     </head>
     <body ng-controller="sportsStoreCtrl">
         <div class="navbar navbar-inverse">
@@ -15,7 +18,9 @@
         </div>
         <div class="panel panel-default row">
             <div class="col-xs-3">
-                 Categories go here
+                 <div ng-repeat="item in data.products | orderBy: 'category' | unique: 'category'">
+                     {{item}}
+                </div>
             </div>
             <div class="col-xs-8">
                 <div class="well" ng-repeat="item in data.products">
